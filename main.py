@@ -40,11 +40,14 @@ def start_main(scheduler, config):
     # 슬랙
     SlackBotToken = config['Slack']['SlackBotToken']
     SlackBotChannel = config['Slack']['SlackBotChannel']
+    SlackBotMantion = config['Slack']['SlackBotMantion']
 
-    msg = "#####################################\n 웹 서버 상태 #####################################\n\t\t\t"
+
+    msg = "##################################### Start #####################################\n"
+
     for name, url in urls.items():
         status = check_url(name, url)
-        msg += status + '\n\t\t\t'
+        msg += status + '\n'
 
     current_time = datetime.datetime.now().strftime("%H:%M")
 
@@ -53,6 +56,11 @@ def start_main(scheduler, config):
         post_message(SlackBotChannel, msg, SlackBotToken)
 
     elif 'Failed' in msg or ': X' in msg:
+
+        # 실패했을경우 멘션
+        if SlackBotMantion:
+            msg += f'<@{SlackBotMantion}>\n'
+
         post_message(SlackBotChannel, msg, SlackBotToken)
         cnt += 1
 
@@ -69,7 +77,6 @@ def restart_scheduler(scheduler):
 
 if __name__ == "__main__":
     cnt = 0
-
     # APScheduler 설정
     scheduler = BlockingScheduler()
     # 설정 파일 로드
