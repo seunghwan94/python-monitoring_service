@@ -4,15 +4,15 @@ URL의 상태를 모니터링하고, 오류가 발생 할 경우 Slack에 메시
 
 ## 설정
 
-1. **config.ini**: 동작 설정
-   - `[URLs]`: 모니터링 URL과 이름 정의
-   - `[TimeSettings]`: 특정 시간 URL 상태와 관계없이 알림
+**config.ini**: 동작 설정
+   - `[Scheduler]`: 간격 설정
+      - `[Unit] = seconds`: `seconds` or `minutes` or `hours`
+      - `[Value] = 5` (5초 or 5분 or 5시간)
    - `[StopScheduler]`: 오류 발생 시 일정 횟수 이상 스케줄러 일시 정지 설정
+   - `[TimeSettings]`: 특정 시간 URL 상태와 관계없이 Slack에 메시지 전송
+   - `[URLs]`: 모니터링 URL과 이름 정의
    - `[Slack]`: Slack API 토큰과 메시지 전송할 채널 설정
-
-2. **스케줄러 설정**: 모니터링 간격 설정
-   - `Unit = seconds`: 간격 단위 설정 (seconds or minutes or hours)
-   - `Value = 5`: 5초 마다 한 번씩 모니터링 실행
+     [Slack Bot 설정 방법](https://gentle-chokeberry-d27.notion.site/Slack-Bot-6d82a379470543f1990fd032ed24fb77?pvs=4)
 
 ## 사용 방법
 
