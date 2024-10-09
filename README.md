@@ -2,6 +2,10 @@
 
 URL의 상태를 모니터링하고, 오류가 발생 할 경우 Slack에 메시지 전송하는 프로그램
 
+### 스크린 샷
+![Untitled (9)](https://github.com/user-attachments/assets/3f4e7690-d36f-49d8-85db-0aff2e4d9dfb)
+
+
 ## 설정
 
 **config.ini**: 동작 설정
